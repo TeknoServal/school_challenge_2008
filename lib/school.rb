@@ -16,12 +16,20 @@ class School
   end
 
   def full_time?
-    #Changed is_full_time? to full_time? to align more with Ruby conventions
+    # Changed is_full_time? to full_time? to align more with Ruby conventions
 
     hours_in_school_day > 4
   end
 
   def standard_student_names
     student_names.map(&:capitalize)
+  end
+
+  def convert_end_time_to_clock_time
+    end_int = end_time.delete_suffix(':00').to_i
+
+    return end_time unless end_int > 12
+
+    "#{end_int - 12}:00"
   end
 end
